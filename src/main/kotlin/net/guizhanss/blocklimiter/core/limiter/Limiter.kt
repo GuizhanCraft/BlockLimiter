@@ -48,6 +48,8 @@ class Limiter {
 
         val chunkContent = chunkData.getOrPut(chunkPos) { ChunkContent() }
         allBlockData.forEach { chunkContent.increment(it.sfId) }
+
+        BlockLimiter.debug("loaded chunk data of $chunkPos: $chunkContent")
     }
 
     fun getGroups() = groups.toSet()

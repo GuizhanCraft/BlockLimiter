@@ -24,10 +24,12 @@ data class Group(
         if (id != null && !items.contains(id)) return -1
 
         // check for permission node limits
+        var currentLimit = defaultLimit
         for ((node, limit) in permissionNodes.entries) {
-            if (p.hasPermission("blocklimiter.permission.$node")) return limit
+            if (p.hasPermission("blocklimiter.permission.$node") && currentLimit < limit) {
+                currentLimit = limit
+            }
         }
-        // return default limit
-        return defaultLimit
+        return currentLimit
     }
 }

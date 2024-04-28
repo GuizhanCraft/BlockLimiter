@@ -7,7 +7,7 @@
 限制仅对新放置的方块生效，不会影响已有方块。因此，建议在开服时就添加该插件并针对服务器性能进行适当配置。
 
 - 将相似方块进行编组来进行限制（虽然你可以任意进行编组）
-- 额外权限节点`blocklimiter.permission.<permission_node>`来单独修改限制（如需禁用限制，请设置值为-1）
+- 额外权限节点`blocklimiter.permission.<permission_node>`来单独修改限制（如需禁用限制，请设置值为较大的数值）。拥有多个权限节点时，取最大值。
 - `blocklimiter.bypass` 权限节点可以忽略所有限制
 - 支持热重载配置（`/bl reload`）
 - 使用`/bl count`查看当前当前区块的限制
