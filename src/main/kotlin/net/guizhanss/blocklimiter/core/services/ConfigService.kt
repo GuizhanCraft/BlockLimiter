@@ -6,6 +6,7 @@ import org.bukkit.configuration.ConfigurationSection
 
 class ConfigService(plugin: BlockLimiter) {
     private val config = AddonConfig(plugin, "config.yml")
+    private val limitGroupsConfig = AddonConfig(plugin, "limit-groups.yml")
 
     var autoUpdate = true
         private set
@@ -18,10 +19,11 @@ class ConfigService(plugin: BlockLimiter) {
 
     fun reload() {
         config.reload()
+        limitGroupsConfig.reload()
         config.addMissingKeys()
 
         autoUpdate = config.getBoolean("options.auto-update", true)
-        limitGroups = config.getConfigurationSection("limit-groups")
+        limitGroups = limitGroupsConfig.getConfigurationSection("")
 
         config.save()
     }
