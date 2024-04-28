@@ -51,7 +51,8 @@ class CountCommand(parent: AbstractCommand) : AbstractSubCommand(
             for (itemId in group.items) {
                 val sfItem = SlimefunItem.getById(itemId)
                 if (sfItem != null) {
-                    msg.append("${ChatColor.WHITE}${sfItem.itemName} ${ChatColor.WHITE}(${itemId})\n")
+                    msg.append("${ChatColor.YELLOW}${chunkContent?.getAmount(itemId) ?: 0} x ")
+                        .append("${ChatColor.WHITE}${sfItem.itemName} ${ChatColor.WHITE}(${itemId})\n")
                 }
             }
 

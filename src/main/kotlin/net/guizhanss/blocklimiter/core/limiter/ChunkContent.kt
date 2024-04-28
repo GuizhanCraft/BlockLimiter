@@ -53,9 +53,19 @@ class ChunkContent {
         return group.items.sumOf { getAmount(it) }
     }
 
+    /**
+     * Get the amount of an item in the chunk.
+     *
+     * @param id [String] the item id
+     *
+     * @return [Int] the amount of the item in the chunk
+     */
+    fun getAmount(id: String) = content[id] ?: 0
+
     private fun setAmount(id: String, amount: Int) {
         content[id] = if (amount >= 0) amount else 0
     }
 
-    private fun getAmount(id: String) = content[id] ?: 0
+
+    override fun toString() = content.toString()
 }

@@ -24,12 +24,12 @@ class BlockLimiter : AbstractAddon(
             private set
         var debugEnabled = false
 
-        fun log(level: Level, message: String, vararg args: Any) {
-            instance.logger.log(level, MessageFormat.format(message, *args))
+        fun log(level: Level, message: String) {
+            instance.logger.log(level, message)
         }
 
-        fun debug(message: String, vararg args: Any) {
-            if (debugEnabled) log(Level.INFO, "[DEBUG] $message", *args)
+        fun debug(message: String) {
+            if (debugEnabled) log(Level.INFO, "[DEBUG] $message")
         }
     }
 
