@@ -17,6 +17,7 @@ class ReloadCommand(parent: AbstractCommand) : AbstractSubCommand(
             return
         }
 
+        BlockLimiter.configService.reload()
         BlockLimiter.limiter.loadGroups()
         sender.sendMessage("${ChatColor.GREEN}配置文件已重载")
     }
