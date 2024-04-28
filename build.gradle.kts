@@ -26,12 +26,16 @@ dependencies {
     implementation("org.bstats:bstats-bukkit:3.0.2")
 }
 
-kotlin {
-    jvmToolchain(17)
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 tasks.compileKotlin {
-    kotlinOptions.javaParameters = true
+    kotlinOptions {
+        javaParameters = true
+        jvmTarget = "17"
+    }
 }
 
 tasks.shadowJar {
