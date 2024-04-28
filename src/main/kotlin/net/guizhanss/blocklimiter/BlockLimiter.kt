@@ -6,6 +6,7 @@ import net.guizhanss.blocklimiter.core.services.ConfigService
 import net.guizhanss.blocklimiter.core.services.ListenerService
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon
 import net.guizhanss.guizhanlib.updater.GuizhanBuildsUpdater
+import org.bstats.bukkit.Metrics
 import org.bukkit.plugin.Plugin
 import java.io.File
 import java.text.MessageFormat
@@ -68,8 +69,7 @@ class BlockLimiter : AbstractAddon(
     }
 
     private fun setupMetrics() {
-        // TODO: add metrics
-//        Metrics(this, 0)
+        Metrics(this, 21726)
     }
 
     override fun autoUpdate() {
