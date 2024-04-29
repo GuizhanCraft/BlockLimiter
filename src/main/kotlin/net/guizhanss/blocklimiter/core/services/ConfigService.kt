@@ -2,10 +2,11 @@ package net.guizhanss.blocklimiter.core.services
 
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config
 import net.guizhanss.blocklimiter.BlockLimiter
+import net.guizhanss.blocklimiter.utils.ConfigUtils.saveDefaultFile
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig
 import org.bukkit.configuration.ConfigurationSection
 
-class ConfigService(plugin: BlockLimiter) {
+class ConfigService(private val plugin: BlockLimiter) {
     private val config = AddonConfig(plugin, "config.yml")
     private val limitGroupsConfig = Config(plugin, "limit-groups.yml")
 
@@ -20,6 +21,7 @@ class ConfigService(plugin: BlockLimiter) {
 
     fun reload() {
         config.reload()
+        saveDefaultFile(plugin, "limit-groups.yml")
         limitGroupsConfig.reload()
         config.addMissingKeys()
 
