@@ -10,18 +10,23 @@ import net.guizhanss.guizhanlib.minecraft.commands.AbstractCommand
 import org.bukkit.ChatColor
 import org.bukkit.command.CommandSender
 
-class DebugCommand(parent: AbstractCommand) : AbstractSubCommand(
-    parent, "debug", { _, _ -> "切换调试模式" }, ""
+class ListCommand(parent: AbstractCommand) : AbstractSubCommand(
+    parent, "list", { _, _ -> "列出所有的限制分组" }, ""
 ) {
     override fun onExecute(sender: CommandSender, args: Array<String>) {
-        if (!sender.hasPermission(Permissions.DEBUG)) {
+        if (!sender.hasPermission(Permissions.LIST)) {
             sender.sendMessage("${ChatColor.RED}你没有权限执行该命令")
             return
         }
 
-        BlockLimiter.debugEnabled = !BlockLimiter.debugEnabled
-        sender.sendMessage(
-            if (BlockLimiter.debugEnabled) "${ChatColor.GREEN}调试模式已开启" else "${ChatColor.RED}调试模式已关闭"
-        )
+        val msg = StringBuilder()
+
+        msg.append("${ChatColor.GREEN}所有的限制分组: \n")
+
+        val groups = BlockLimiter.limiter.getGroups().joinToString("${ChatColor.WHITE}, ") { "${ChatColor.YELLOW}${it.name}" }
+
+        msg.append(groups)
+
+        sender.sendMessage(msg.toString())
     }
 }

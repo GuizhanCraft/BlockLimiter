@@ -2,6 +2,8 @@ package net.guizhanss.blocklimiter.core.commands
 
 import net.guizhanss.blocklimiter.core.commands.subcommands.CountCommand
 import net.guizhanss.blocklimiter.core.commands.subcommands.DebugCommand
+import net.guizhanss.blocklimiter.core.commands.subcommands.InfoCommand
+import net.guizhanss.blocklimiter.core.commands.subcommands.ListCommand
 import net.guizhanss.blocklimiter.core.commands.subcommands.ReloadCommand
 import net.guizhanss.guizhanlib.minecraft.commands.BaseCommand
 import org.bukkit.command.CommandSender
@@ -13,6 +15,8 @@ class MainCommand(command: PluginCommand) : BaseCommand(
     init {
         addSubCommand(CountCommand(this))
         addSubCommand(DebugCommand(this))
+        addSubCommand(InfoCommand(this))
+        addSubCommand(ListCommand(this))
         addSubCommand(ReloadCommand(this))
     }
 

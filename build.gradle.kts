@@ -65,6 +65,14 @@ bukkit {
     }
 
     permissions {
+        register("blocklimiter.info") {
+            description = "Use info command"
+            default = BukkitPluginDescription.Permission.Default.TRUE
+        }
+        register("blocklimiter.list") {
+            description = "Use list command"
+            default = BukkitPluginDescription.Permission.Default.TRUE
+        }
         register("blocklimiter.bypass") {
             description = "Bypass the limit"
             default = BukkitPluginDescription.Permission.Default.OP

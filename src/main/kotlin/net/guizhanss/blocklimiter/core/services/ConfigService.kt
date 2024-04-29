@@ -21,9 +21,9 @@ class ConfigService(private val plugin: BlockLimiter) {
 
     fun reload() {
         config.reload()
+        config.addMissingKeys()
         saveDefaultFile(plugin, "limit-groups.yml")
         limitGroupsConfig.reload()
-        config.addMissingKeys()
 
         autoUpdate = config.getBoolean("options.auto-update", true)
         limitGroups = limitGroupsConfig.configuration.getConfigurationSection("")

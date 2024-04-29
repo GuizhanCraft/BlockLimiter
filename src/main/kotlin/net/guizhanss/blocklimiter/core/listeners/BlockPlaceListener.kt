@@ -5,6 +5,8 @@ package net.guizhanss.blocklimiter.core.listeners
 import io.github.thebusybiscuit.slimefun4.api.events.SlimefunBlockPlaceEvent
 import io.github.thebusybiscuit.slimefun4.libraries.dough.blocks.ChunkPosition
 import net.guizhanss.blocklimiter.BlockLimiter
+import net.guizhanss.blocklimiter.utils.Permissions
+import net.guizhanss.blocklimiter.utils.hasPermission
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -25,7 +27,7 @@ class BlockPlaceListener(plugin: BlockLimiter) : Listener {
         val chunkPos = ChunkPosition(e.blockPlaced.chunk)
         val chunk = BlockLimiter.limiter.getChunkContent(chunkPos)
         BlockLimiter.debug("chunk: $chunkPos, sfId: $sfId, playerLimit: $playerLimit, chunkAmount: ${chunk?.getGroupTotal(sfId) ?: 0}")
-        if (chunk == null || chunk.getGroupTotal(sfId) < playerLimit || p.hasPermission("blocklimiter.bypass")) {
+        if (chunk == null || chunk.getGroupTotal(sfId) < playerLimit || p.hasPermission(Permissions.BYPASS)) {
             BlockLimiter.limiter.increment(ChunkPosition(e.blockPlaced.chunk), e.slimefunItem.id)
         } else {
             e.isCancelled = true

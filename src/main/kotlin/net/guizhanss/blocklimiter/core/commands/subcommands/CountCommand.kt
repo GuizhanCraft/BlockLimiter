@@ -34,7 +34,7 @@ class CountCommand(parent: AbstractCommand) : AbstractSubCommand(
                 return
             }
 
-            msg.append("${ChatColor.GREEN}分组 ")
+            msg.append("${ChatColor.GREEN}分组名称: ")
                 .append("${ChatColor.YELLOW}${group.name}\n")
 
             msg.append("${ChatColor.GREEN}当前限制: ")
