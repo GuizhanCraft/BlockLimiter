@@ -22,7 +22,7 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     compileOnly("com.github.StarWishsama:Slimefun4:2024.3")
-    implementation("net.guizhanss:GuizhanLib-api:1.7.6")
+    implementation("net.guizhanss:GuizhanLib-api:1.8.1")
     implementation("org.bstats:bstats-bukkit:3.0.2")
 }
 
